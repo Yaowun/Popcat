@@ -1,7 +1,7 @@
 # Popcat
 
 ## 專案介紹
-本專案使用 Python 程式語言實作網路爬蟲，利用 Selenium 套件進行網路爬蟲，透過 ChromeDriver 開啟 POPCAT 網站並自動執行點擊指令。
+本專案使用 Python 程式語言，利用 Selenium 套件進行網路爬蟲，透過 ChromeDriver 開啟 POPCAT 網站並自動執行點擊指令。
 
 ## 專案技術
 Python 3.9、Selenium 4.8.2
