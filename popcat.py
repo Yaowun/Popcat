@@ -2,6 +2,7 @@ import os, sys, shutil, time
 import chromedriver_autoinstaller
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
 def is_number(s):
     try:
@@ -45,8 +46,11 @@ def get_chrome_main_version():
 def update_chromedriver(path):
     chrome_main_version = get_chrome_main_version()
     for p in os.listdir(path):
-        if p != chrome_main_version:
-            shutil.rmtree(os.path.join(path, p), ignore_errors=False)
+        try:
+            if int(p) < int(chrome_main_version):
+                shutil.rmtree(os.path.join(path, p), ignore_errors=False)
+        except:
+            pass
     chromedriver_autoinstaller.install(path="./chromedriver")
     
 
@@ -70,7 +74,7 @@ while True:
 print("Programming starts...")
 path_chromedriver = "./chromedriver"
 update_chromedriver(path_chromedriver)
-driver = webdriver.Chrome(os.path.join(path_chromedriver, get_chrome_main_version(), "chromedriver.exe"))
+driver = webdriver.Chrome(service=Service(os.path.join(path_chromedriver, get_chrome_main_version(), "chromedriver.exe")))
 driver.get("https://popcat.click/")
 popcat = driver.find_element(By.ID, "app")
 count = 0
@@ -88,5 +92,4 @@ while count < click_end_number:
             web_existed = False
     if not web_existed:
         break
-
 print("Popcat {} clicks done.".format(count))
