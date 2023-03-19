@@ -33,8 +33,8 @@ def update_chromedriver(path):
 ```
 
 ### 點擊次數設定
-本專案透過與程式互動設定點擊次數，根據用戶可能的輸入進行條件判斷並給予適當回應，最後依據所得到輸入執行爬蟲程式。
-根據用戶不同的輸入，設定給予的回應為：
+本專案透過與程式互動設定點擊次數，根據用戶的輸入進行條件判斷並給予適當回應，最後依據得到的用戶輸入執行爬蟲程式。  
+依據用戶不同的輸入，設定給予的回應為：
 * 空值 - 確認是否直接執行爬蟲程式直到關閉網頁，要求輸入 Yes 或 No
 * 含有不是數字的非法法字元 - 提示輸入包含非法字元，要求重新輸入
 * 非正整數 - 提示輸入需為正整數，要求重新輸入
@@ -85,7 +85,8 @@ def is_number(s):
     except ValueError:
          return False 
 ```
-底下為實際執行結果
+
+### 範例
 ```
 Please enter the number of clicks you want: 
 Do you want to continue running the programming until you close it? [Y/n] 
@@ -104,5 +105,5 @@ Please enter the number of clicks you want: 100
 Programming starts...
 Popcat 100 clicks done.
 ```
-
+![POPCAT autoclicker](./fig/screenshot.png)
 
